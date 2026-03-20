@@ -20,7 +20,8 @@
     <img src="./assets/images/logo.svg" loading="lazy" class="max-w-[137.9px] max-h-7">
     <div class="unit-selector-container relative">
       <div class="dropdown flex items-center bg-neutral800 p-3 gap-1.5 rounded-md">
-        <img src="./assets/images/icon-units.svg" loading="lazy">
+        <img src="./assets/images/icon-units.svg" loading="lazy" class=" rotate-0 dropdown-icon
+          transition-transform duration-200">
         <p class="font-DMSans text-preset8 text-white">Units</p>
         <img src="./assets/images/icon-dropdown.svg" loading="lazy"
           class="rotate-0 dropdown-icon transition-transform duration-200">
@@ -244,9 +245,25 @@
       <section class="text-white font-DMSans my-5 bg-neutral800 px-4 py-5 rounded-[20px]">
         <div class="flex items-center justify-between">
           <p class="text-preset5">Hourly forecast</p>
-          <div class="flex items-center gap-2 bg-neutral600 px-4 py-2 rounded-md">
-            <p class="text-preset8" id="hourly__forecast-day">Tuesday</p>
-            <img src="./assets/images/icon-dropdown.svg" loading="lazy" alt="dropdown-icon" />
+          <div class="days-dropdown relative">
+            <div class="flex items-center gap-2 bg-neutral600 px-4 py-2 rounded-md">
+              <p class="text-preset8" id="hourly__forecast-day">Tuesday</p>
+              <img src="./assets/images/icon-dropdown.svg" loading="lazy" alt="dropdown-icon" />
+            </div>
+            <div class="absolute right-0 min-w-48 top-10 bg-neutral800 border border-neutral600 rounded-md opacity-0 -translate-y-2
+            transition-all duration-200 days-dropdown-menu">
+              <div class="p-2">
+                <ul class="text-preset7 text-white flex flex-col gap-2">
+                  <li value="Monday" class="px-2 py-2.5 rounded-md">Monday</li>
+                  <li value="Tuesday" class="bg-neutral600 px-2 py-2.5 rounded-md">Tuesday</li>
+                  <li value="Wednesday" class="px-2 py-2.5 rounded-md">Wednesday</li>
+                  <li value="Thursday" class="px-2 py-2.5 rounded-md">Thursday</li>
+                  <li value="Friday" class="px-2 py-2.5 rounded-md">Friday</li>
+                  <li value="Saturday" class="px-2 py-2.5 rounded-md">Saturday</li>
+                  <li value="Sunday" class="px-2 py-2.5 rounded-md">Sunday</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
         <div id="hourly__forecast-container" class="overflow-scroll">
