@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* Design System for the weather app */
+  /* Style Guide - Color */
+  --color-neutral900: hsl(243, 96%, 9%);
+  --color-neutral800: hsl(243, 27%, 20%);
+  --color-neutral700: hsl(243, 23%, 24%);
+  --color-neutral600: hsl(243, 23%, 30%);
+  --color-neutral300: hsl(240, 6%, 70%);
+  --color-neutral200: hsl(250, 6%, 84%);
+  --color-neutral0: hsl(0, 0, 100%);
+  --color-orange: hsl(28, 100%, 52%);
+  --color-blue500: hsl(233, 67%, 56%);
+  --color-blue700: hsl(248, 70%, 30%);
+
+  /* Style Guide - typography */
+  --text-preset1: 6rem;
+  --text-preset1--line-height: 100%;
+  --text-preset1--letter-spacing: -2px;
+  --text-preset1--font-weight: 600;
+
+  --text-preset2: clamp(3.25rem, 2.17vw + 2.75rem, 5.25rem);
+  --text-preset2--line-height: 120%;
+  --text-preset2--letter-spacing: 0;
+  --text-preset2--font-weight: 700;
+
+  --text-preset3: 2rem;
+  --text-preset3--line-height: 100%;
+  --text-preset3--letter-spacing: 0;
+  --text-preset3--font-weight: 300;
+
+  --text-preset4: 1.75rem;
+  --text-preset4--line-height: 120%;
+  --text-preset4--letter-spacing: 0;
+  --text-preset4--font-weight: 700;
+
+  --text-preset5: 1.25rem;
+  --text-preset5--line-height: 120%;
+  --text-preset5--letter-spacing: 0;
+
+  --text-preset6: 1.125rem;
+  --text-preset6--line-height: 120%;
+  --text-preset6--letter-spacing: 0;
+  --text-preset6--font-weight: 500;
+
+  --text-preset7: 1rem;
+  --text-preset7--line-height: 120%;
+  --text-preset7--letter-spacing: 0;
+  --text-preset7--font-weight: 500;
+
+  --text-preset8: 0.875rem;
+  --text-preset8--line-height: 120%;
+  --text-preset8--letter-spacing: 0;
+  --text-preset8--font-weight: 500;
+
+  /* Style-Guide Font */
+  --font-DMSans: "DM Sans", sans-serif;
+  --font-briscolage: "Bricolage Grotesque", system-UI;
+}

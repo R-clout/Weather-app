@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link href="./src/output.css" rel="stylesheet">
+
+  <title>Frontend Mentor | Weather app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+
+</head>
+
+<body class="bg-neutral900 p-6 xl:px-28 xl:py-12 flex flex-col">
+  <header class="flex justify-between items-center">
+    <img src="./assets/images/logo.svg" loading="lazy" class="max-w-[137.9px] max-h-7">
+    <div class="unit__change-selector-container relative ">
+      <div id="unit__change-selector" class="flex items-center bg-neutral800 p-3 gap-1.5 rounded-md">
+        <img src="./assets/images/icon-units.svg" loading="lazy">
+        <p class="font-DMSans text-preset8 text-white">Units</p>
+        <img src="./assets/images/icon-dropdown.svg" loading="lazy" class="">
+      </div>
+      <div
+        class="w-53.5 bg-neutral800 border border-neutral600 absolute right-0 top-11 text-white rounded-xl px-2 py-1.5 flex flex-col gap-2 opacity-100">
+        <h3 class="text-preset7 font-DMSans px-2 py-2.5">Switch to imperial</h3>
+        <div class="temperature-change">
+          <p class="text-preset8 text-neutral300 px-2 pt-1.5 mb-2">Temperature</p>
+          <label class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5">
+            <p class="text-preset7">Celsius (°C)</p>
+            <!-- manipulating radio buttons to make them into checkmark, i think i might be back to using this particular edit because there's no input type of "check", so i have to resort to using the peer pseudo -->
+            <div>
+              <!-- have a radio button and then adding the peer pseudo and hide it first -->
+              <input type="radio" name="temperature-value" class="peer hidden" id="Farenheit" value="Farenheit"
+                checked />
+              <!-- past an svg that'll be displayed when the input is clicked -->
+              <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
+                viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
+                  fill="white" />
+              </svg>
+
+            </div>
+          </label>
+          <label class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5">
+            <p class="text-preset7 ">Farenheit (°F)</p>
+            <div>
+              <input type="radio" name="temperature-value" class="peer hidden" id="celsius" value="celsius" />
+              <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
+                viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
+                  fill="white" />
+              </svg>
+
+            </div>
+          </label>
+        </div>
+        <div class="bg-neutral600 w-full h-px"></div>
+        <div class="wind-speed">
+          <p class="text-preset8 text-neutral300 px-2 pt-1.5 mb-2">Wind Speed</p>
+          <label class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5">
+            <p class="text-preset7">km/h</p>
+            <div>
+              <input type="radio" name="wind__speed-value" class="peer hidden" id="kilometre" value="kilometre"
+                checked />
+              <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
+                viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
+                  fill="white" />
+              </svg>
+            </div>
+          </label>
+          <label class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5">
+            <p class="text-preset7 ">mph</p>
+            <div>
+              <input type="radio" name="wind__speed-value" class="peer hidden" id="mph" value="mph" />
+              <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
+                viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
+                  fill="white" />
+              </svg>
+            </div>
+          </label>
+        </div>
+        <div class="bg-neutral600 w-full h-px"></div>
+        <div class="precipitation">
+          <p class="text-preset8 text-neutral300 px-2 pt-1.5 mb-2">Precipitation</p>
+          <label class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5">
+            <p class="text-preset7">Millimeters (mm)</p>
+            <div>
+              <input type="radio" name="precipitation" class="peer hidden" id="millimeters" value="millimeters"
+                checked />
+              <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
+                viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
+                  fill="white" />
+              </svg>
+
+            </div>
+          </label>
+          <label class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5 ">
+            <p class="text-preset7 ">inches (in)</p>
+            <div>
+              <input type="radio" name="precipitation" class="peer hidden" id="inches" value="inches" />
+              <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
+                viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
+                  fill="white" />
+              </svg>
+
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <h1 class="text-preset2 text-center text-white my-10 font-briscolage">How's the sky looking today?
+    </h1>
+
+    <section id="search-menu" class="lg:flex lg:items-center lg:gap-2 lg:w-163.75 lg:h-14 lg:mx-auto">
+      <div id="search-container" class="flex items-center bg-neutral800 p-4 rounded-xl gap-4">
+        <img src="./assets/images/icon-search.svg" loading="lazy" alt="search-icon" class=" max-h-7">
+        <input type="text" id="search-bar" name="search-bar" placeholder="Search for a place..."
+          class="text-neutral200 text-preset5 outline-0 font-DMSans w-full lg:w-131.5">
+      </div>
+      <button id="search-btn"
+        class="bg-blue500 w-full my-2 p-3 text-center text-preset5 text-white rounded-xl font-DMSans lg:w-28.5 lg:h-14">Search</button>
+    </section>
+    <section class="weather__grid xl:grid xl:grid-cols-2 xl:grid-rows-3">
+      <section id="weather__information-display"
+        class="text-white md:bg-[url('/assets/images/bg-today-large.svg')] max-md:bg-[url('/assets/images/bg-today-small.svg')] bg-no-repeat bg-cover md:flex md:items-center rounded-3xl px-6 py-20 my-5">
+        <div class="max-md:text-center w-full flex flex-col gap-2">
+          <h2 class="text-preset4 font-DMSans">Berlin, Germany</h2>
+          <p class="text-preset6 font-DMSans">Tuesday, Aug 5, 2025</p>
+        </div>
+        <div class="flex justify-end max-md:justify-center w-full items-center font-DMSans ">
+          <div class="max-w-30 max-h-30">
+            <img src="./assets/images/icon-sunny.webp" loading="lazy" alt="sun-icon" class="" />
+          </div>
+          <p class="text-preset1 font-DMSans italic">20°</p>
+        </div>
+      </section>
+
+      <section id="climate__element" class="text-white font-DMSans grid grid-cols-2 md:grid-cols-4  gap-2">
+        <div class="bg-neutral800 border border-neutral600  flex flex-col gap-4 p-5 rounded-xl">
+          <p class="text-preset6">Feels Like</p>
+          <p class="text-preset3">18°</p>
+        </div>
+        <div class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
+          <p class="text-preset6">Humidity</p>
+          <p class="text-preset3">46%</p>
+        </div>
+        <div class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
+          <p class="text-preset6">Wind</p>
+          <p class="text-preset3">14 km/h</p>
+        </div>
+        <div class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
+          <p class="text-preset6">Precipitation</p>
+          <p class="text-preset3">0 mm</p>
+        </div>
+      </section>
+
+      <section id="daily-forecast" class="my-5">
+        <h2 class="text-preset5 text-white">Daily forecast</h2>
+        <div class="forecast-container text-white w-full grid grid-cols-3 md:flex gap-3 my-5 font-DMSans">
+          <div class="bg-neutral800 border border-neutral600 rounded-xl flex flex-col items-center p-4">
+            <p class="text-preset8">Tue</p>
+            <img src="./assets/images/icon-rain.webp" alt="rain-icon" loading="lazy" />
+            <div class="text-preset7 flex justify-between w-full">
+              <p class="">20°</p>
+              <p>14°</p>
+            </div>
+          </div>
+          <div class="bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+            <p class="text-preset8">Wed</p>
+            <img src="./assets/images/icon-drizzle.webp" alt="rain-icon" loading="lazy" />
+            <div class="text-preset7 flex justify-between w-full">
+              <p class="">21°</p>
+              <p>15°</p>
+            </div>
+          </div>
+          <div class="bg-neutral800 border border-neutral600 rounded-xl flex flex-col items-center p-4">
+            <p class="text-preset8">Thu</p>
+            <img src="./assets/images/icon-sunny.webp" alt="sunny-icon" loading="lazy" />
+            <div class="text-preset7 flex justify-between w-full ">
+              <p class="">24°</p>
+              <p>14°</p>
+            </div>
+          </div>
+          <div class="bg-neutral800 border border-neutral600 rounded-xl flex flex-col items-center p-4">
+            <p class="text-preset8">Fri</p>
+            <img src="./assets/images/icon-partly-cloudy.webp" alt="partly__cloudy-icon" loading="lazy" />
+            <div class="text-preset7 flex justify-between w-full ">
+              <p class="">25°</p>
+              <p>13°</p>
+            </div>
+          </div>
+          <div class="bg-neutral800 border border-neutral600 rounded-xl flex flex-col items-center p-4">
+            <p class="text-preset8">Sat</p>
+            <img src="./assets/images/icon-storm.webp" alt="storm-icon" loading="lazy" />
+            <div class="text-preset7 flex justify-between w-full ">
+              <p class="">21°</p>
+              <p>15°</p>
+            </div>
+          </div>
+          <div class="bg-neutral800 border border-neutral600 rounded-xl flex flex-col items-center p-4">
+            <p class="text-preset8">Sun</p>
+            <img src="./assets/images/icon-snow.webp" alt="snow-icon" loading="lazy" />
+            <div class="text-preset7 flex justify-between w-full ">
+              <p class="">25°</p>
+              <p>16°</p>
+            </div>
+          </div>
+          <div class="bg-neutral800 border border-neutral600 rounded-xl flex flex-col items-center p-4">
+            <p class="text-preset8">Mon</p>
+            <img src="./assets/images/icon-fog.webp" alt="fog-icon" loading="lazy" />
+            <div class="text-preset7 flex justify-between w-full ">
+              <p class="">20°</p>
+              <p>14°</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <section class="text-white font-DMSans my-5 bg-neutral800 px-4 py-5 rounded-[20px]">
+        <div class="flex items-center justify-between">
+          <p class="text-preset5">Hourly forecast</p>
+          <div class="flex items-center gap-2 bg-neutral600 px-4 py-2 rounded-md">
+            <p class="text-preset8" id="hourly__forecast-day">Tuesday</p>
+            <img src="./assets/images/icon-dropdown.svg" loading="lazy" alt="dropdown-icon" />
+          </div>
+        </div>
+        <div id="hourly__forecast-container" class="overflow-scroll">
+          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            <div class="flex items-center">
+              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
+              <p class="text-preset5">3PM</p>
+            </div>
+            <p class="text-preset7">20°</p>
+          </div>
+          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            <div class="flex items-center">
+              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
+              <p class="text-preset5">4PM</p>
+            </div>
+            <p class="text-preset7">20°</p>
+          </div>
+          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            <div class="flex items-center">
+              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
+              <p class="text-preset5">5PM</p>
+            </div>
+            <p class="text-preset7">20°</p>
+          </div>
+          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            <div class="flex items-center">
+              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
+              <p class="text-preset5">6PM</p>
+            </div>
+            <p class="text-preset7">19°</p>
+          </div>
+          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            <div class="flex items-center">
+              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
+              <p class="text-preset5">7PM</p>
+            </div>
+            <p class="text-preset7">18°</p>
+          </div>
+          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            <div class="flex items-center">
+              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
+              <p class="text-preset5">8PM</p>
+            </div>
+            <p class="text-preset7">18°</p>
+          </div>
+          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            <div class="flex items-center">
+              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
+              <p class="text-preset5">9PM</p>
+            </div>
+            <p class="text-preset7">17°</p>
+          </div>
+          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            <div class="flex items-center">
+              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
+              <p class="text-preset5">10PM</p>
+            </div>
+            <p class="text-preset7">17°</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+
+</html>
