@@ -1,15 +1,25 @@
-const dropdown = document.querySelector('.dropdown');
-const dropdownMenu = document.querySelector('.dropdown-menu');
+const unitContainer = document.querySelector('.unit-selector-container');
+const dropdown = unitContainer.querySelector('.dropdown');
+const dropdownMenu = unitContainer.querySelector('.dropdown-menu');
+const dropdownIcon = unitContainer.querySelector('.dropdown-icon');
 
 // a function for the dropdown menu
-function itemsDropdown(){
-    dropdownMenu.classList.toggle('hidden');
+function itemsDropdown(e){
+    // this is just to make the dropdown menu visibles
     dropdownMenu.classList.toggle('opacity-0');
-    dropdownMenu.classList.toggle('-translate-y-2')
+    dropdownMenu.classList.toggle('-translate-y-2');
+    dropdownIcon.classList.toggle('rotate-180');
+}
+
+function closeitemsDropdown(e){
+    
+    if(!dropdown.contains(e.target) && !dropdownMenu.contains(e.target)){
+       dropdownMenu.classList.add('opacity-0');
+    dropdownMenu.classList.add('-translate-y-2');
+    dropdownIcon.classList.remove('rotate-180');
+    }
 }
 
 
-dropdown.addEventListener('click', itemsDropdown)
-
-
-// 
+document.addEventListener('click', closeitemsDropdown);
+dropdown.addEventListener('click', itemsDropdown);

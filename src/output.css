@@ -215,6 +215,9 @@
   .pointer-events-none {
     pointer-events: none;
   }
+  .visible {
+    visibility: visible;
+  }
   .absolute {
     position: absolute;
   }
@@ -318,6 +321,18 @@
   .translate-y-0 {
     --tw-translate-y: calc(var(--spacing) * 0);
     translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .rotate-0 {
+    rotate: 0deg;
+  }
+  .rotate-1 {
+    rotate: 1deg;
+  }
+  .rotate-10 {
+    rotate: 10deg;
+  }
+  .rotate-180 {
+    rotate: 180deg;
   }
   .resize {
     resize: both;
