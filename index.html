@@ -19,106 +19,114 @@
   <header class="flex justify-between items-center">
     <img src="./assets/images/logo.svg" loading="lazy" class="max-w-[137.9px] max-h-7">
     <div class="unit__change-selector-container relative ">
-      <div id="unit__change-selector" class="flex items-center bg-neutral800 p-3 gap-1.5 rounded-md">
+      <div class="dropdown flex items-center bg-neutral800 p-3 gap-1.5 rounded-md">
         <img src="./assets/images/icon-units.svg" loading="lazy">
         <p class="font-DMSans text-preset8 text-white">Units</p>
         <img src="./assets/images/icon-dropdown.svg" loading="lazy" class="">
       </div>
-      <div
-        class="w-53.5 bg-neutral800 border border-neutral600 absolute right-0 top-11 text-white rounded-xl px-2 py-1.5 flex flex-col gap-2 opacity-100">
-        <h3 class="text-preset7 font-DMSans px-2 py-2.5">Switch to imperial</h3>
-        <div class="temperature-change">
-          <p class="text-preset8 text-neutral300 px-2 pt-1.5 mb-2">Temperature</p>
-          <label class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5">
-            <p class="text-preset7">Celsius (°C)</p>
-            <!-- manipulating radio buttons to make them into checkmark, i think i might be back to using this particular edit because there's no input type of "check", so i have to resort to using the peer pseudo -->
-            <div>
-              <!-- have a radio button and then adding the peer pseudo and hide it first -->
-              <input type="radio" name="temperature-value" class="peer hidden" id="Farenheit" value="Farenheit"
-                checked />
-              <!-- past an svg that'll be displayed when the input is clicked -->
-              <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
-                viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
-                  fill="white" />
-              </svg>
+      <div class="w-53.5 bg-neutral800  absolute right-0 top-11  text-white rounded-md hidden opacity-0 -translate-y-2
+            transition-all duration-200 dropdown-menu">
+        <div class="px-2 py-1.5 flex flex-col gap-2">
+          <h3 class="text-preset7 font-DMSans px-2 py-2.5">Switch to imperial</h3>
+          <div class="temperature-change">
+            <p class="text-preset8 text-neutral300 px-2 pt-1.5 mb-2">Temperature</p>
+            <label
+              class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5 hover:bg-neutral600">
+              <p class="text-preset7">Celsius (°C)</p>
+              <!-- manipulating radio buttons to make them into checkmark, i think i might be back to using this particular edit because there's no input type of "check", so i have to resort to using the peer pseudo -->
+              <div>
+                <!-- have a radio button and then adding the peer pseudo and hide it first -->
+                <input type="radio" name="temperature-value" class="peer hidden" id="Farenheit" value="Farenheit"
+                  checked />
+                <!-- past an svg that'll be displayed when the input is clicked -->
+                <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
+                  viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
+                    fill="white" />
+                </svg>
 
-            </div>
-          </label>
-          <label class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5">
-            <p class="text-preset7 ">Farenheit (°F)</p>
-            <div>
-              <input type="radio" name="temperature-value" class="peer hidden" id="celsius" value="celsius" />
-              <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
-                viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
-                  fill="white" />
-              </svg>
+              </div>
+            </label>
+            <label
+              class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5 hover:bg-neutral600">
+              <p class="text-preset7 ">Farenheit (°F)</p>
+              <div>
+                <input type="radio" name="temperature-value" class="peer hidden" id="celsius" value="celsius" />
+                <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
+                  viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
+                    fill="white" />
+                </svg>
 
-            </div>
-          </label>
-        </div>
-        <div class="bg-neutral600 w-full h-px"></div>
-        <div class="wind-speed">
-          <p class="text-preset8 text-neutral300 px-2 pt-1.5 mb-2">Wind Speed</p>
-          <label class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5">
-            <p class="text-preset7">km/h</p>
-            <div>
-              <input type="radio" name="wind__speed-value" class="peer hidden" id="kilometre" value="kilometre"
-                checked />
-              <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
-                viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
-                  fill="white" />
-              </svg>
-            </div>
-          </label>
-          <label class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5">
-            <p class="text-preset7 ">mph</p>
-            <div>
-              <input type="radio" name="wind__speed-value" class="peer hidden" id="mph" value="mph" />
-              <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
-                viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
-                  fill="white" />
-              </svg>
-            </div>
-          </label>
-        </div>
-        <div class="bg-neutral600 w-full h-px"></div>
-        <div class="precipitation">
-          <p class="text-preset8 text-neutral300 px-2 pt-1.5 mb-2">Precipitation</p>
-          <label class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5">
-            <p class="text-preset7">Millimeters (mm)</p>
-            <div>
-              <input type="radio" name="precipitation" class="peer hidden" id="millimeters" value="millimeters"
-                checked />
-              <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
-                viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
-                  fill="white" />
-              </svg>
+              </div>
+            </label>
+          </div>
+          <div class="bg-neutral600 w-full h-px"></div>
+          <div class="wind-speed">
+            <p class="text-preset8 text-neutral300 px-2 pt-1.5 mb-2">Wind Speed</p>
+            <label
+              class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5 hover:bg-neutral600">
+              <p class="text-preset7">km/h</p>
+              <div>
+                <input type="radio" name="wind__speed-value" class="peer hidden" id="kilometre" value="kilometre"
+                  checked />
+                <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
+                  viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
+                    fill="white" />
+                </svg>
+              </div>
+            </label>
+            <label
+              class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5 hover:bg-neutral600">
+              <p class="text-preset7 ">mph</p>
+              <div>
+                <input type="radio" name="wind__speed-value" class="peer hidden" id="mph" value="mph" />
+                <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
+                  viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
+                    fill="white" />
+                </svg>
+              </div>
+            </label>
+          </div>
+          <div class="bg-neutral600 w-full h-px"></div>
+          <div class="precipitation">
+            <p class="text-preset8 text-neutral300 px-2 pt-1.5 mb-2">Precipitation</p>
+            <label
+              class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5 hover:bg-neutral600">
+              <p class="text-preset7">Millimeters (mm)</p>
+              <div>
+                <input type="radio" name="precipitation" class="peer hidden" id="millimeters" value="millimeters"
+                  checked />
+                <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
+                  viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
+                    fill="white" />
+                </svg>
 
-            </div>
-          </label>
-          <label class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5 ">
-            <p class="text-preset7 ">inches (in)</p>
-            <div>
-              <input type="radio" name="precipitation" class="peer hidden" id="inches" value="inches" />
-              <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
-                viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
-                  fill="white" />
-              </svg>
+              </div>
+            </label>
+            <label
+              class="flex items-center justify-between has-checked:bg-neutral700 rounded-lg px-2 py-2.5 hover:bg-neutral600">
+              <p class="text-preset7 ">inches (in)</p>
+              <div>
+                <input type="radio" name="precipitation" class="peer hidden" id="inches" value="inches" />
+                <svg class="opacity-0 peer-checked:opacity-100 transition-opacity" width="13" height="10"
+                  viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M11.1836 0.136719C11.3203 0 11.5391 0 11.6484 0.136719L12.4414 0.902344C12.5508 1.03906 12.5508 1.25781 12.4414 1.36719L4.23828 9.57031C4.10156 9.70703 3.91016 9.70703 3.77344 9.57031L0.109375 5.93359C0 5.79688 0 5.57812 0.109375 5.46875L0.902344 4.67578C1.01172 4.56641 1.23047 4.56641 1.36719 4.67578L3.99219 7.32812L11.1836 0.136719Z"
+                    fill="white" />
+                </svg>
 
-            </div>
-          </label>
+              </div>
+            </label>
+          </div>
         </div>
       </div>
     </div>
@@ -301,6 +309,9 @@
       </section>
     </section>
   </main>
+  <script src="./script.js">
+
+  </script>
 </body>
 
 </html>
