@@ -20,8 +20,7 @@
     <img src="./assets/images/logo.svg" loading="lazy" class="max-w-[137.9px] max-h-7">
     <div class="unit-selector-container relative">
       <div class="dropdown flex items-center bg-neutral800 p-3 gap-1.5 rounded-md">
-        <img src="./assets/images/icon-units.svg" loading="lazy" class=" rotate-0 dropdown-icon
-          transition-transform duration-200">
+        <img src="./assets/images/icon-units.svg" loading="lazy" class="">
         <p class="font-DMSans text-preset8 text-white">Units</p>
         <img src="./assets/images/icon-dropdown.svg" loading="lazy"
           class="rotate-0 dropdown-icon transition-transform duration-200">
@@ -146,41 +145,43 @@
       <button id="search-btn"
         class="bg-blue500 w-full my-2 p-3 text-center text-preset5 text-white rounded-xl font-DMSans lg:w-28.5 lg:h-14">Search</button>
     </section>
-    <section class="weather__grid xl:grid xl:grid-cols-2 xl:grid-rows-3">
-      <section id="weather__information-display"
-        class="text-white md:bg-[url('/assets/images/bg-today-large.svg')] max-md:bg-[url('/assets/images/bg-today-small.svg')] bg-no-repeat bg-cover md:flex md:items-center rounded-3xl px-6 py-20 my-5">
-        <div class="max-md:text-center w-full flex flex-col gap-2">
-          <h2 class="text-preset4 font-DMSans">Berlin, Germany</h2>
-          <p class="text-preset6 font-DMSans">Tuesday, Aug 5, 2025</p>
-        </div>
-        <div class="flex justify-end max-md:justify-center w-full items-center font-DMSans ">
-          <div class="max-w-30 max-h-30">
-            <img src="./assets/images/icon-sunny.webp" loading="lazy" alt="sun-icon" class="" />
+    <section class="weather__grid lg:grid lg:grid-cols-[2fr_1fr] lg:items-start lg:gap-8">
+      <section class="">
+        <section id="weather__information-display"
+          class="text-white md:bg-[url('/assets/images/bg-today-large.svg')] max-md:bg-[url('/assets/images/bg-today-small.svg')] bg-no-repeat bg-cover md:flex md:items-center rounded-3xl px-6 py-20 my-5 ">
+          <div class="max-md:text-center w-full flex flex-col gap-2">
+            <h2 class="text-preset4 font-DMSans">Berlin, Germany</h2>
+            <p class="text-preset6 font-DMSans">Tuesday, Aug 5, 2025</p>
           </div>
-          <p class="text-preset1 font-DMSans italic">20°</p>
-        </div>
+          <div class="flex justify-end max-md:justify-center w-full items-center font-DMSans ">
+            <div class="max-w-30 max-h-30">
+              <img src="./assets/images/icon-sunny.webp" loading="lazy" alt="sun-icon" class="" />
+            </div>
+            <p class="text-preset1 font-DMSans italic">20°</p>
+          </div>
+        </section>
+
+        <section id="climate__element" class="text-white font-DMSans grid grid-cols-2 md:grid-cols-4  gap-2">
+          <div class="bg-neutral800 border border-neutral600  flex flex-col gap-4 p-5 rounded-xl">
+            <p class="text-preset6">Feels Like</p>
+            <p class="text-preset3">18°</p>
+          </div>
+          <div class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
+            <p class="text-preset6">Humidity</p>
+            <p class="text-preset3">46%</p>
+          </div>
+          <div class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
+            <p class="text-preset6">Wind</p>
+            <p class="text-preset3">14 km/h</p>
+          </div>
+          <div class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
+            <p class="text-preset6">Precipitation</p>
+            <p class="text-preset3">0 mm</p>
+          </div>
+        </section>
       </section>
 
-      <section id="climate__element" class="text-white font-DMSans grid grid-cols-2 md:grid-cols-4  gap-2">
-        <div class="bg-neutral800 border border-neutral600  flex flex-col gap-4 p-5 rounded-xl">
-          <p class="text-preset6">Feels Like</p>
-          <p class="text-preset3">18°</p>
-        </div>
-        <div class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
-          <p class="text-preset6">Humidity</p>
-          <p class="text-preset3">46%</p>
-        </div>
-        <div class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
-          <p class="text-preset6">Wind</p>
-          <p class="text-preset3">14 km/h</p>
-        </div>
-        <div class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
-          <p class="text-preset6">Precipitation</p>
-          <p class="text-preset3">0 mm</p>
-        </div>
-      </section>
-
-      <section id="daily-forecast" class="my-5">
+      <section id="daily-forecast" class="my-5 lg:row-start-2">
         <h2 class="text-preset5 text-white">Daily forecast</h2>
         <div class="forecast-container text-white w-full grid grid-cols-3 md:flex gap-3 my-5 font-DMSans">
           <div class="bg-neutral800 border border-neutral600 rounded-xl flex flex-col items-center p-4">
@@ -242,13 +243,15 @@
 
         </div>
       </section>
-      <section class="text-white font-DMSans my-5 bg-neutral800 px-4 py-5 rounded-[20px]">
+      <section
+        class="text-white font-DMSans my-5 bg-neutral800 px-4 py-5 rounded-[20px] lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-3">
         <div class="flex items-center justify-between">
           <p class="text-preset5">Hourly forecast</p>
           <div class="days-dropdown relative">
             <div class="flex items-center gap-2 bg-neutral600 px-4 py-2 rounded-md">
               <p class="text-preset8" id="hourly__forecast-day">Tuesday</p>
-              <img src="./assets/images/icon-dropdown.svg" loading="lazy" alt="dropdown-icon" />
+              <img src="./assets/images/icon-dropdown.svg" loading="lazy" alt="dropdown-icon"
+                class="days-dropdown-icon" />
             </div>
             <div class="absolute right-0 min-w-48 top-10 bg-neutral800 border border-neutral600 rounded-md opacity-0 -translate-y-2
             transition-all duration-200 days-dropdown-menu">
@@ -266,7 +269,7 @@
             </div>
           </div>
         </div>
-        <div id="hourly__forecast-container" class="overflow-scroll">
+        <div id="hourly__forecast-container" class="">
           <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
             <div class="flex items-center">
               <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
