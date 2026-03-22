@@ -56,7 +56,7 @@ function closeitemsDropdown(e){
     //close the day-drop if statement because why not.
 
     if(!daysDropdown.contains(e.target) && !daysdropdownMenu.contains(e.target)){
-         daysdropdownMenu.classList.add('opacity-0');
+        daysdropdownMenu.classList.add('opacity-0');
         daysdropdownMenu.classList.add('-translate-y-2');
         daysdropdownIcon.classList.remove('rotate-180');
     };
