@@ -286,6 +286,12 @@
   .h-150 {
     height: calc(var(--spacing) * 150);
   }
+  .h-\[8\] {
+    height: 8;
+  }
+  .h-\[58\] {
+    height: 58;
+  }
   .h-\[58px\] {
     height: 58px;
   }
@@ -294,6 +300,18 @@
   }
   .h-\[341px\] {
     height: 341px;
+  }
+  .h-\[400px\] {
+    height: 400px;
+  }
+  .h-\[500px\] {
+    height: 500px;
+  }
+  .h-\[549px\] {
+    height: 549px;
+  }
+  .h-\[594px\] {
+    height: 594px;
   }
   .h-full {
     height: 100%;

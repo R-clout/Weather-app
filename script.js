@@ -364,9 +364,18 @@ const obersever = new MutationObserver(() => {
 
 // this is a function reverse geoCode for the latitude and longtitude gotten from the user;
 async function reverseGeoCode(lat, lon) {
-  const reverseUrl = `https://corsproxy.io/?https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=jsonv2`;
+  const isLocal =
+    window.location.hostname === "127.0.0.1" ||
+    window.location.hostname === "localhost";
+  const baseUrl = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=jsonv2`;
+  const url = isLocal ? `https://corsproxy.io/?${baseUrl}` : baseUrl;
+
   try {
-    const response = await fetch(reverseUrl);
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "MyWeatherApp/1.0",
+      },
+    });
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
