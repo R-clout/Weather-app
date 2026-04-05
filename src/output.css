@@ -211,6 +211,12 @@
   }
 }
 @layer utilities {
+  .pointer-events-none {
+    pointer-events: none;
+  }
+  .visible {
+    visibility: visible;
+  }
   .absolute {
     position: absolute;
   }
@@ -229,11 +235,11 @@
   .top-11 {
     top: calc(var(--spacing) * 11);
   }
-  .top-15 {
-    top: calc(var(--spacing) * 15);
-  }
   .right-0 {
     right: calc(var(--spacing) * 0);
+  }
+  .z-10 {
+    z-index: 10;
   }
   .z-100 {
     z-index: 100;
@@ -274,6 +280,21 @@
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
+  .h-37 {
+    height: calc(var(--spacing) * 37);
+  }
+  .h-150 {
+    height: calc(var(--spacing) * 150);
+  }
+  .h-\[58px\] {
+    height: 58px;
+  }
+  .h-\[137px\] {
+    height: 137px;
+  }
+  .h-\[341px\] {
+    height: 341px;
+  }
   .h-full {
     height: 100%;
   }
@@ -295,6 +316,18 @@
   .w-53\.5 {
     width: calc(var(--spacing) * 53.5);
   }
+  .w-\[101px\] {
+    width: 101px;
+  }
+  .w-\[295px\] {
+    width: 295px;
+  }
+  .w-\[327px\] {
+    width: 327px;
+  }
+  .w-\[372px\] {
+    width: 372px;
+  }
   .w-full {
     width: 100%;
   }
@@ -312,6 +345,10 @@
   }
   .-translate-y-2 {
     --tw-translate-y: calc(var(--spacing) * -2);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-0 {
+    --tw-translate-y: calc(var(--spacing) * 0);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .rotate-0 {
@@ -332,6 +369,9 @@
   .resize {
     resize: both;
   }
+  .list-none {
+    list-style-type: none;
+  }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -346,6 +386,9 @@
   }
   .justify-between {
     justify-content: space-between;
+  }
+  .justify-center {
+    justify-content: center;
   }
   .justify-end {
     justify-content: flex-end;
@@ -365,8 +408,11 @@
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
-  .overflow-hidden {
-    overflow: hidden;
+  .overflow-y-auto {
+    overflow-y: auto;
+  }
+  .overflow-y-scroll {
+    overflow-y: scroll;
   }
   .rounded-3xl {
     border-radius: var(--radius-3xl);
@@ -389,9 +435,6 @@
   }
   .border-neutral600 {
     border-color: var(--color-neutral600);
-  }
-  .border-neutral700 {
-    border-color: var(--color-neutral700);
   }
   .bg-blue500 {
     background-color: var(--color-blue500);
@@ -535,6 +578,9 @@
   }
   .opacity-0 {
     opacity: 0%;
+  }
+  .opacity-100 {
+    opacity: 100%;
   }
   .outline {
     outline-style: var(--tw-outline-style);

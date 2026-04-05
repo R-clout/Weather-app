@@ -142,14 +142,6 @@
           <input type="text" id="search-bar" name="search-bar" placeholder="Search for a place..."
             class="text-neutral200 text-preset5 outline-0 font-DMSans w-full h-full lg:w-131.5">
         </div>
-
-        <ul
-          class="search-resuls-container absolute bg-neutral800 border border-neutral700 rounded-xl opacity-0 p-2 text-white w-full top-15 text-preset7">
-          <div class="loading-spinner flex gap-2">
-            <img src="./assets/images/icon-loading.svg" alt="loading-icon" loading="lazy" class="animate-spin" />
-            <p>Search in progress</p>
-          </div>
-        </ul>
       </div>
       <button id="search-btn"
         class="bg-blue500 w-full my-2 p-3 text-center text-preset5 text-white rounded-xl font-DMSans lg:w-28.5 lg:h-14">Search</button>
@@ -157,35 +149,36 @@
     <section class="weather__grid lg:grid lg:grid-cols-[2fr_1fr] lg:items-start lg:gap-8">
       <section class="">
         <section id="weather__information-display"
+          class="loader hidden w-[327px] h-[341px] bg-neutral800 text-white bg-cover md:flex md:items-center rounded-3xl px-6 py-20 my-5 flex justify-center items-center gap-2">
+          <img src="./assets/images/icon-loading.svg" class="animate-spin" />
+          <p class="text-preset6">loading</p>
+        </section>
+        <section id="weather__information-display"
           class="text-white md:bg-[url('/assets/images/bg-today-large.svg')] max-md:bg-[url('/assets/images/bg-today-small.svg')] bg-no-repeat bg-cover md:flex md:items-center rounded-3xl px-6 py-20 my-5 ">
-          <div class="max-md:text-center w-full flex flex-col gap-2">
-            <h2 id="dvCityCountry" class="text-preset4 font-DMSans">Berlin, Germany</h2>
-            <p id="dvCurrDate" class="text-preset6 font-DMSans">Tuesday, Aug 5, 2025</p>
+          <div class="country-state-and-date max-md:text-center w-full flex flex-col gap-2">
+
           </div>
-          <div class="flex justify-end max-md:justify-center w-full items-center font-DMSans ">
-            <div class="max-w-30 max-h-30">
-              <img src="./assets/images/icon-sunny.webp" loading="lazy" alt="sun-icon" class="" />
-            </div>
-            <p class="text-preset1 font-DMSans italic" id="dvCurrTemp">20°</p>
+          <div class="weather-temp-and-image flex justify-end max-md:justify-center w-full items-center font-DMSans ">
+
           </div>
         </section>
 
         <section id="climate__element" class="text-white font-DMSans grid grid-cols-2 md:grid-cols-4  gap-2">
-          <div class="bg-neutral800 border border-neutral600  flex flex-col gap-4 p-5 rounded-xl">
+          <div id="pFeelLike" class="bg-neutral800 border border-neutral600  flex flex-col gap-4 p-5 rounded-xl">
             <p class="text-preset6">Feels Like</p>
-            <p class="text-preset3" id="pFeelLike">18°</p>
+            <p class="text-preset3">-</p>
           </div>
-          <div class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
+          <div id="pHumidity" class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
             <p class="text-preset6">Humidity</p>
-            <p class="text-preset3" id="pHumidity"></p>
+            <p class="text-preset3">-</p>
           </div>
-          <div class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
+          <div id="pWind" class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
             <p class="text-preset6">Wind</p>
-            <p class="text-preset3" id="pWind">14 km/h</p>
+            <p class="text-preset3">-</p>
           </div>
-          <div class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
+          <div id="pPrecipitation" class="bg-neutral800 border border-neutral600 flex flex-col gap-4 p-5 rounded-xl">
             <p class="text-preset6">Precipitation</p>
-            <p class="text-preset3" id="pPrecipitation">0 <span>mm</span></p>
+            <p class="text-preset3">-</p>
           </div>
         </section>
       </section>
@@ -193,117 +186,89 @@
       <section id="daily-forecast" class="my-5 lg:row-start-2">
         <h2 class="text-preset5 text-white">Daily forecast</h2>
         <div class="forecast-container text-white w-full grid grid-cols-3 md:flex gap-3 my-5 font-DMSans">
+          <div
+            class=" w-[101px] h-[137px] bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
 
-          <div class="bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
-            <p class="text-preset8">Wed</p>
-            <img src="./assets/images/icon-drizzle.webp" alt="rain-icon" loading="lazy" />
-            <div class="text-preset7 flex justify-between w-full">
-              <p class="">21°</p>
-              <p>15°</p>
-            </div>
           </div>
-          <div class="bg-neutral800 border border-neutral600 rounded-xl flex flex-col items-center p-4">
-            <p class="text-preset8">Thu</p>
-            <img src="./assets/images/icon-sunny.webp" alt="sunny-icon" loading="lazy" />
-            <div class="text-preset7 flex justify-between w-full ">
-              <p class="">24°</p>
-              <p>14°</p>
-            </div>
-          </div>
-          <div class="bg-neutral800 border border-neutral600 rounded-xl flex flex-col items-center p-4">
-            <p class="text-preset8">Fri</p>
-            <img src="./assets/images/icon-partly-cloudy.webp" alt="partly__cloudy-icon" loading="lazy" />
-            <div class="text-preset7 flex justify-between w-full ">
-              <p class="">25°</p>
-              <p>13°</p>
-            </div>
-          </div>
-          <div class="bg-neutral800 border border-neutral600 rounded-xl flex flex-col items-center p-4">
-            <p class="text-preset8">Sat</p>
-            <img src="./assets/images/icon-storm.webp" alt="storm-icon" loading="lazy" />
-            <div class="text-preset7 flex justify-between w-full ">
-              <p class="">21°</p>
-              <p>15°</p>
-            </div>
-          </div>
-          <div class="bg-neutral800 border border-neutral600 rounded-xl flex flex-col items-center p-4">
-            <p class="text-preset8">Sun</p>
-            <img src="./assets/images/icon-snow.webp" alt="snow-icon" loading="lazy" />
-            <div class="text-preset7 flex justify-between w-full ">
-              <p class="">25°</p>
-              <p>16°</p>
-            </div>
-          </div>
-          <div class="bg-neutral800 border border-neutral600 rounded-xl flex flex-col items-center p-4">
-            <p class="text-preset8">Mon</p>
-            <img src="./assets/images/icon-fog.webp" alt="fog-icon" loading="lazy" />
-            <div class="text-preset7 flex justify-between w-full ">
-              <p class="">20°</p>
-              <p>14°</p>
-            </div>
-          </div>
+          <div
+            class=" w-[101px] h-[137px] bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
 
+          </div>
+          <div
+            class=" w-[101px] h-[137px] bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+
+          </div>
+          <div
+            class=" w-[101px] h-[137px] bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+
+          </div>
+          <div
+            class=" w-[101px] h-[137px] bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+
+          </div>
+          <div
+            class=" w-[101px] h-[137px] bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+
+          </div>
+          <div
+            class=" w-[101px] h-[137px] bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+
+          </div>
         </div>
       </section>
       <section
-        class="text-white font-DMSans my-5 bg-neutral800 px-4 py-5 rounded-[20px] lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-3">
+        class="text-white font-DMSans my-5 bg-neutral800 px-4 py-5 rounded-[20px] lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-3 overflow-y-auto">
         <div class="flex items-center justify-between">
           <p class="text-preset5">Hourly forecast</p>
           <div class="relative">
             <div class="flex items-center gap-2 bg-neutral600 px-4 py-2 rounded-md days-dropdown ">
-              <p class="text-preset8" id="hourly__forecast-day">Tuesday</p>
+              <p class="text-preset8" id="hourly__forecast-day">-</p>
               <img src="./assets/images/icon-dropdown.svg" loading="lazy" alt="dropdown-icon"
                 class="days-dropdown-icon transition-transform duration-200" />
             </div>
-            <div class="absolute right-0 min-w-48 top-10 bg-neutral800 border border-neutral600 rounded-md opacity-0 -translate-y-2
-            transition-all duration-200 days-dropdown-menu">
+            <div class="absolute right-0 min-w-48 top-10 z-10 bg-neutral800 border border-neutral600 rounded-md
+            transition-all duration-200 days-dropdown-menu opacity-0">
               <div class="p-2">
-                <ul class="text-preset7 text-white flex flex-col gap-2">
-                  <li class="relative rounded-md overflow-hidden">
-                    <input type="radio" id="monday" value="monday" name="hourly-forecast" class="peer hidden" checked />
-                    <label for="monday"
-                      class="block p-2 cursor-pointer transition-colors peer-checked:bg-neutral600 hover:bg-neutral700">
-                      Monday
-                    </label>
-                  </li>
-                  <li class="relative rounded-md overflow-hidden">
-                    <input type="radio" id="tuesday" value="tuesday" name="hourly-forecast" class="peer hidden" />
+                <ul class="p-2 list-none text-preset7 text-white flex flex-col gap-2 days-dropdown-menu">
+
+                  <li class="rounded-md">
+                    <input type="radio" id="tuesday" value="Tuesday" name="hourly-forecast" class="peer hidden"
+                      checked />
                     <label for="tuesday"
                       class="block p-2 cursor-pointer transition-colors peer-checked:bg-neutral600 hover:bg-neutral700">
                       Tuesday
                     </label>
                   </li>
-                  <li class="relative rounded-md overflow-hidden">
-                    <input type="radio" id="wednesday" name="hourly-forecast" value="wednesday" class="peer hidden" />
+                  <li class="rounded-md">
+                    <input type="radio" id="wednesday" name="hourly-forecast" value="Wednesday" class="peer hidden" />
                     <label for="wednesday"
                       class="block p-2 cursor-pointer transition-colors peer-checked:bg-neutral600 hover:bg-neutral700">
                       Wednesday
                     </label>
                   </li>
-                  <li class="relative rounded-md overflow-hidden">
-                    <input type="radio" id="thursday" name="hourly-forecast" value="thursday" class="peer hidden" />
+                  <li class="rounded-md">
+                    <input type="radio" id="thursday" name="hourly-forecast" value="Thursday" class="peer hidden" />
                     <label for="thursday"
                       class="block p-2 cursor-pointer transition-colors peer-checked:bg-neutral600 hover:bg-neutral700">
                       Thursday
                     </label>
                   </li>
-                  <li class="relative rounded-md overflow-hidden">
-                    <input type="radio" id="thursday" value="friday" name="hourly-forecast" class="peer hidden"
-                      checked />
+                  <li class="rounded-md ">
+                    <input type="radio" id="friday" value="Friday" name="hourly-forecast" class="peer hidden" />
                     <label for="friday"
                       class="block p-2 cursor-pointer transition-colors peer-checked:bg-neutral600 hover:bg-neutral700">
                       Friday
                     </label>
                   </li>
-                  <li class="relative rounded-md overflow-hidden">
-                    <input type="radio" id="saturday" value="saturday" name="hourly-forecast" class="peer hidden" />
+                  <li class=" rounded-md">
+                    <input type="radio" id="saturday" value="Saturday" name="hourly-forecast" class="peer hidden" />
                     <label for="saturday"
                       class="block p-2 cursor-pointer transition-colors peer-checked:bg-neutral600 hover:bg-neutral700">
                       Saturday
                     </label>
                   </li>
-                  <li class="relative rounded-md overflow-hidden">
-                    <input type="radio" id="sunday" value="sunday" name="hourly-forecast" class="peer hidden" />
+                  <li class="rounded-md">
+                    <input type="radio" id="sunday" value="Sunday" name="hourly-forecast" class="peer hidden" />
                     <label for="sunday"
                       class="block p-2 cursor-pointer transition-colors peer-checked:bg-neutral600 hover:bg-neutral700">
                       Sunday
@@ -314,63 +279,56 @@
             </div>
           </div>
         </div>
-        <div id="hourly__forecast-container" class="">
-          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
-            <div class="flex items-center">
-              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
-              <p class="text-preset5">3PM</p>
-            </div>
-            <p class="text-preset7">20°</p>
+        <div id="hourly__forecast-container" class="overflow-y-scroll h-150">
+          <div
+            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+
           </div>
-          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
-            <div class="flex items-center">
-              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
-              <p class="text-preset5">4PM</p>
-            </div>
-            <p class="text-preset7">20°</p>
+          <div
+            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+
           </div>
-          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
-            <div class="flex items-center">
-              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
-              <p class="text-preset5">5PM</p>
-            </div>
-            <p class="text-preset7">20°</p>
+          <div
+            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+
           </div>
-          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
-            <div class="flex items-center">
-              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
-              <p class="text-preset5">6PM</p>
-            </div>
-            <p class="text-preset7">19°</p>
+          <div
+            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+
           </div>
-          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
-            <div class="flex items-center">
-              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
-              <p class="text-preset5">7PM</p>
-            </div>
-            <p class="text-preset7">18°</p>
+          <div
+            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+
           </div>
-          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
-            <div class="flex items-center">
-              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
-              <p class="text-preset5">8PM</p>
-            </div>
-            <p class="text-preset7">18°</p>
+          <div
+            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+
           </div>
-          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
-            <div class="flex items-center">
-              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
-              <p class="text-preset5">9PM</p>
-            </div>
-            <p class="text-preset7">17°</p>
+          <div
+            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+
           </div>
-          <div class="flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
-            <div class="flex items-center">
-              <img src="./assets/images/icon-partly-cloudy.webp" loading="lazy" alt="sunny-icon" class="w-10 h-10" />
-              <p class="text-preset5">10PM</p>
-            </div>
-            <p class="text-preset7">17°</p>
+          <div
+            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+
           </div>
+          <div
+            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+
+          </div>
+          <div
+            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+
+          </div>
+          <div
+            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+
+          </div>
+          <div
+            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+
+          </div>
+
         </div>
       </section>
     </section>
