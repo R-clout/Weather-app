@@ -81,12 +81,20 @@ const setting = {
 
 // this is a function for getting the latitude and longitude of a particular location and this is going to be infused into the search input box
 async function getGeoCodeData() {
-  let search = searchInput.value.trim();
+  let search = encodeURIComponent(searchInput.value.trim());
   const nominatimUrl = `https://nominatim.openstreetmap.org/search?q=${search}&format=jsonv2&addressdetails=1`;
-  const url = `https://corsproxy.io/?${nominatimUrl}`;
+
+  const isLocal =
+    window.location.hostname === "127.0.0.1" ||
+    window.location.hostname === "localhost";
+  const url = isLocal ? "https://corsproxy.io/?${nominatimUrl}" : nominatimUrl;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "MyWeatherApp/1.0",
+      },
+    });
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
@@ -383,7 +391,7 @@ async function reverseGeoCode(lat, lon) {
     console.log(result);
 
     countryStateandDate.innerHTML = `
-    <h2 id="dvCityCountry" class="text-preset4 font-DMSans">${result.address.city}, ${result.address.country}</h2>
+    <h2 id="dvCityCountry" class="text-preset4 font-DMSans">${result.address.city == undefined ? result.address.county : result.address.city}, ${result.address.country}</h2>
     <p id="dvCurrDate" class="text-preset6 font-DMSans">${date}</p>
   `;
   } catch (error) {
