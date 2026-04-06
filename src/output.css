@@ -283,6 +283,9 @@
   .h-34\.25 {
     height: calc(var(--spacing) * 34.25);
   }
+  .h-85\.25 {
+    height: calc(var(--spacing) * 85.25);
+  }
   .h-150 {
     height: calc(var(--spacing) * 150);
   }
@@ -312,6 +315,9 @@
   }
   .w-53\.5 {
     width: calc(var(--spacing) * 53.5);
+  }
+  .w-81\.75 {
+    width: calc(var(--spacing) * 81.75);
   }
   .w-\[295px\] {
     width: 295px;
