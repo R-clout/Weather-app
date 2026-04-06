@@ -59,4 +59,16 @@
   /* Style-Guide Font */
   --font-DMSans: "DM Sans", sans-serif;
   --font-briscolage: "Bricolage Grotesque", system-UI;
+
+  /* animation gradients for loading backgrounds*/
+  --animate-gradient: gradientShift 3s ease infinite;
+
+  @keyframes gradientShift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 }

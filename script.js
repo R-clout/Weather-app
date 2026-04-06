@@ -18,14 +18,15 @@ const dvCurrDate = document.querySelector("#dvCurrDate");
 const dvCurrTemp = document.querySelector("#dvCurrTemp");
 const pPrecipitation = document.querySelector("#pPrecipitation");
 const forecastWeather = document.querySelector(".forecast-container");
+const weathercontainer = document.querySelector(".weather-temp-and-image");
+const wrongDisplay = document.querySelector(".wrong-display");
 const radioButtons = document.querySelectorAll('input[name="hourly-forecast"]');
 const weatherImage = document.querySelector(".weather-image");
 const countryStateandDate = document.querySelector(".country-state-and-date");
 const climateElement = document.querySelector("#climate__element");
 const loaders = document.querySelectorAll(".loader");
 
-// this
-const searchArray = [];
+let searchArray = [];
 let lat, lon;
 let wasOpen = false;
 let cityName, countryName;
@@ -83,11 +84,10 @@ const setting = {
 async function getGeoCodeData() {
   let search = encodeURIComponent(searchInput.value.trim());
   const nominatimUrl = `https://nominatim.openstreetmap.org/search?q=${search}&format=jsonv2&addressdetails=1`;
-
   const isLocal =
     window.location.hostname === "127.0.0.1" ||
     window.location.hostname === "localhost";
-  const url = isLocal ? "https://corsproxy.io/?${nominatimUrl}" : nominatimUrl;
+  const url = isLocal ? `https://corsproxy.io/?${nominatimUrl}` : nominatimUrl;
 
   try {
     const response = await fetch(url, {
@@ -99,32 +99,16 @@ async function getGeoCodeData() {
       throw new Error(`Response status: ${response.status}`);
     }
     const result = await response.json();
+    console.log(result);
 
-    const allowedTypes = [
-      "city",
-      "town",
-      "village",
-      "state",
-      "county",
-      "municipality",
-      "suburb",
-    ];
-    const filtered = result
-      .filter((place) => allowedTypes.includes(place.addresstype))
-      .filter((place) =>
-        place.name.toLowerCase().includes(search.toLowerCase()),
-      )
-      .filter((place) => place.importance > 0.7)
-      .sort((a, b) => b.importance - a.importance) // best match first
-      .slice(0, 5);
-
-    searchArray.push(...filtered);
+    searchArray.push(...result);
     console.log(searchArray);
-    if (filtered.length > 0) {
-      lat = filtered[0].lat;
-      lon = filtered[0].lon;
+    if (searchArray.length > 0) {
+      lat = result[0].lat;
+      lon = result[0].lon;
       getWeatherData(lat, lon);
       loadLocationData(searchArray);
+      searchArray = [];
     } else {
       console.warn("No relevant results found for:", search);
     }
@@ -147,6 +131,22 @@ function loadLocationData(locationData) {
 
 // this is a function to get the weather data;
 async function getWeatherData(lat, lon) {
+  const weatherDisplay = document.getElementById(
+    "weather__information-display",
+  );
+
+  weatherDisplay.classList.add(
+    "md:bg-[url('/assets/images/bg-today-large.svg')]",
+  );
+  weatherDisplay.classList.add(
+    "max-md:bg-[url('/assets/images/bg-today-small.svg')]",
+  );
+  weatherDisplay.classList.add("bg-no-repeat");
+  weatherDisplay.classList.add("bg-cover");
+  countryStateandDate.classList.remove("hidden");
+  weathercontainer.classList.remove("hidden");
+  document.getElementById("loader").classList.add("hidden");
+
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=temperature_2m,weather_code&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,apparent_temperature,precipitation&wind_speed_unit=${setting.windSpeed}&temperature_unit=${setting.temperature}&precipitation_unit=${setting.precipitation}`;
   try {
     const response = await fetch(url);
@@ -157,14 +157,29 @@ async function getWeatherData(lat, lon) {
     console.log(result);
     loadWeatherData(result);
   } catch (error) {
-    console.error(error.message);
+    wrongDisplay.classList.add(
+      "flex",
+      "flex-col",
+      "items-center",
+      "gap-4",
+      "my-4",
+    );
+    wrongDisplay.innerHTML = `
+    <div class="">
+        <img src="./assets/images/icon-error.svg" loading="lazy" alt="search-icon" class="mx-auto max-h-7">
+        <h1 class="md:text-preset2 text-preset4 text-white ">Something went wrong</h1>
+        </div>
+        <p class="md:text-preset5 text-center text-neutral200">We couldn’t connect to the server (API error). Please try again in a few moments.</p>
+        <button id="retryButton" class="py-4 px-3 bg-neutral800 flex mx-auto gap-2.5 rounded-lg">
+          <img src="./assets/images/icon-retry.svg" loading="lazy" alt="search-icon" class=" max-h-7">
+          <p class="text-preset7 text-white">Retry</p>
+        </button>
+    `;
   }
 }
 
 // this function works to populate the weather data.
 function loadWeatherData(weather) {
-  const weathercontainer = document.querySelector(".weather-temp-and-image");
-
   weathercontainer.innerHTML = `
     <div class="max-w-30 max-h-30">
       <img class="weather-image" src="./assets/images/icon-${getIconName(weather.current.weather_code)}.webp" loading="lazy" alt="sun-icon" class="" />
@@ -301,6 +316,7 @@ function itemsDropdown() {
   dropdownMenu.classList.toggle("opacity-0");
   dropdownMenu.classList.toggle("-translate-y-2");
   dropdownIcon.classList.toggle("rotate-180");
+  dropdownMenu.classList.toggle("z-10");
 }
 
 // this is to close the dropdown when its clicked outside of it.
@@ -309,6 +325,7 @@ function closeitemsDropdown(e) {
     dropdownMenu.classList.add("opacity-0");
     dropdownMenu.classList.add("-translate-y-2");
     dropdownIcon.classList.remove("rotate-180");
+    dropdownMenu.classList.remove("z-10");
   }
 
   //close the day-drop if statement because why not.
@@ -423,4 +440,11 @@ window.addEventListener("load", () => {
       getWeatherData(lat, lon);
     },
   );
+});
+window.addEventListener("click", (e) => {
+  console.log(e);
+  if (e.target.id === "retryButton") {
+    console.log('true');
+    window.location.reload()
+  }
 });

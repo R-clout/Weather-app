@@ -17,7 +17,7 @@
 
 <body class="bg-neutral900 p-6 xl:px-28 xl:py-12 flex flex-col">
   <header class="flex justify-between items-center">
-    <img src="./assets/images/logo.svg" loading="lazy" class="max-w-[137.9px] max-h-7">
+    <a href="./index.html"><img src="./assets/images/logo.svg" loading="lazy" class="max-w-[137.9px] max-h-7"></a>
     <div class="unit-selector-container relative">
       <div class="dropdown flex items-center bg-neutral800 p-3 gap-1.5 rounded-md">
         <img src="./assets/images/icon-units.svg" loading="lazy" class="">
@@ -25,7 +25,7 @@
         <img src="./assets/images/icon-dropdown.svg" loading="lazy"
           class="rotate-0 dropdown-icon transition-transform duration-200">
       </div>
-      <div class="w-53.5 bg-neutral800 z-100  absolute right-0 top-11  text-white rounded-md opacity-0 -translate-y-2
+      <div class="w-53.5 bg-neutral800 absolute right-0 top-11  text-white rounded-md opacity-0 -translate-y-2
             transition-all duration-200 dropdown-menu">
         <div class="px-2 py-1.5 flex flex-col gap-2">
           <h3 class="text-preset7 font-DMSans px-2 py-2.5">Switch to imperial</h3>
@@ -131,7 +131,7 @@
       </div>
     </div>
   </header>
-  <main>
+  <main class="wrong-display">
     <h1 class="text-preset2 text-center text-white my-10 font-briscolage">How's the sky looking today?
     </h1>
 
@@ -148,22 +148,26 @@
     </section>
     <section class="weather__grid lg:grid lg:grid-cols-[2fr_1fr] lg:items-start lg:gap-8">
       <section class="">
-        <section id="weather__information-display"
-          class="loader hidden w-81.75 h-85.25 bg-neutral800 text-white bg-cover md:flex md:items-center rounded-3xl px-6 py-20 my-5 justify-center items-center gap-2">
-          <img src="./assets/images/icon-loading.svg" class="animate-spin" />
-          <p class="text-preset6">loading</p>
+        <section id="weather__information-display-1"
+          class="loader hidden  bg-neutral800 text-white bg-cover md:hidden md:items-center rounded-3xl px-6 py-20 my-5 justify-center items-center gap-2">
+
         </section>
         <section id="weather__information-display"
-          class="text-white md:bg-[url('/assets/images/bg-today-large.svg')] max-md:bg-[url('/assets/images/bg-today-small.svg')] bg-no-repeat bg-cover md:flex md:items-center rounded-3xl px-6 py-20 my-5 ">
-          <div class="country-state-and-date max-md:text-center w-full flex flex-col gap-2">
-
+          class="text-white flex max-md:flex-col justify-center items-center bg-neutral800 w-full h-85.25 md:flex md:items-center rounded-3xl px-6 py-20 my-5 ">
+          <div id="loader" class="flex gap-2">
+            <img src="./assets/images/icon-loading.svg" class="animate-spin" />
+            <p class="text-preset6">Loading</p>
           </div>
-          <div class="weather-temp-and-image flex justify-end max-md:justify-center w-full items-center font-DMSans ">
+          <div class="country-state-and-date hidden max-md:text-center w-full flex flex-col gap-2">
+          </div>
+          <div
+            class="weather-temp-and-image hidden flex justify-end max-md:justify-center w-full items-center font-DMSans ">
 
           </div>
         </section>
 
-        <section id="climate__element" class="text-white font-DMSans grid grid-cols-2 md:grid-cols-4  gap-2">
+
+        <section id="climate__element" class="text-white font-DMSans grid grid-cols-2 min-[630px]:grid-cols-4  gap-2">
           <div id="pFeelLike" class="bg-neutral800 border border-neutral600  flex flex-col gap-4 p-5 rounded-xl">
             <p class="text-preset6">Feels Like</p>
             <p class="text-preset3">-</p>
@@ -185,39 +189,39 @@
 
       <section id="daily-forecast" class="my-5 lg:row-start-2">
         <h2 class="text-preset5 text-white">Daily forecast</h2>
-        <div class="forecast-container text-white w-full grid grid-cols-3 md:flex gap-3 my-5 font-DMSans">
+        <div class="forecast-container text-white w-full grid grid-cols-3 min-[630px]:flex gap-3 my-5 font-DMSans">
           <div
-            class=" w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-25.25 h-34.25 rounded-xl flex flex-col items-center p-4 border border-neutral600">
 
           </div>
           <div
-            class=" w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
 
           </div>
           <div
-            class=" w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
 
           </div>
           <div
-            class=" w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
 
           </div>
           <div
-            class=" w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
 
           </div>
           <div
-            class=" w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
 
           </div>
           <div
-            class=" w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-25.25 h-34.25 bg-neutral800 rounded-xl flex flex-col items-center p-4 border border-neutral600">
 
           </div>
         </div>
       </section>
       <section
-        class="text-white font-DMSans my-5 bg-neutral800 px-4 py-5 rounded-[20px] lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-3 overflow-y-auto">
+        class="text-white font-DMSans my-5 bg-neutral800 px-4 py-5 rounded-[20px] lg:w-full lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-3">
         <div class="flex items-center justify-between">
           <p class="text-preset5">Hourly forecast</p>
           <div class="relative">
@@ -279,53 +283,51 @@
             </div>
           </div>
         </div>
-        <div id="hourly__forecast-container" class="overflow-y-scroll h-150">
+        <div id="hourly__forecast-container" class="overflow-y-scroll h-150 w-full">
           <div
-            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-full h-14.5 flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
 
           </div>
           <div
-            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-full h-14.5 flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
 
           </div>
           <div
-            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-full h-14.5 flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
 
           </div>
           <div
-            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-full h-14.5 flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
 
           </div>
           <div
-            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-full h-14.5 flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
 
           </div>
           <div
-            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-full h-14.5 flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+          </div>
+          <div
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-full h-14.5 flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+          </div>
+          <div
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-full h-14.5 flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
 
           </div>
           <div
-            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-full h-14.5 flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
 
           </div>
           <div
-            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-full h-14.5 flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
 
           </div>
           <div
-            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-full h-14.5 flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
 
           </div>
           <div
-            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
-
-          </div>
-          <div
-            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
-
-          </div>
-          <div
-            class="w-[295px] h-[58px] flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
+            class="bg-linear-to-r from-neutral800 via-neutral700 to-neutral600 bg-size-[400%_400%] animate-gradient w-full h-14.5 flex items-center justify-between bg-neutral700 border border-neutral600 my-3 p-2 rounded-md ">
 
           </div>
 
