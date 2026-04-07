@@ -9,6 +9,7 @@ const searchButton = document.querySelector("#search-btn");
 const searchResultContainer = document.querySelector(
   ".search-results-container",
 );
+const form = document.getElementById("form");
 const pFeelsLike = document.querySelector("#pFeelLike");
 const pHumidity = document.querySelector("#pHumidity");
 const pWind = document.querySelector("#pWind");
@@ -21,6 +22,7 @@ const forecastWeather = document.querySelector(".forecast-container");
 const weathercontainer = document.querySelector(".weather-temp-and-image");
 const wrongDisplay = document.querySelector(".wrong-display");
 const radioButtons = document.querySelectorAll('input[name="hourly-forecast"]');
+const weatherDisplayContainer = document.querySelector(".weather__grid");
 const weatherImage = document.querySelector(".weather-image");
 const countryStateandDate = document.querySelector(".country-state-and-date");
 const climateElement = document.querySelector("#climate__element");
@@ -82,6 +84,8 @@ const setting = {
 
 // this is a function for getting the latitude and longitude of a particular location and this is going to be infused into the search input box
 async function getGeoCodeData() {
+  const loadingAnimation = document.querySelector(".search-animation");
+  loadingAnimation.classList.remove("hidden");
   let search = encodeURIComponent(searchInput.value.trim());
   const nominatimUrl = `https://nominatim.openstreetmap.org/search?q=${search}&format=jsonv2&addressdetails=1`;
   const isLocal =
@@ -99,18 +103,22 @@ async function getGeoCodeData() {
       throw new Error(`Response status: ${response.status}`);
     }
     const result = await response.json();
+    loadingAnimation.classList.add("hidden");
+    document.querySelector(".no-result-text").classList.add("hidden");
+    weatherDisplayContainer.classList.remove("hidden", "lg:hidden");
     console.log(result);
 
     searchArray.push(...result);
     console.log(searchArray);
     if (searchArray.length > 0) {
-      lat = result[0].lat;
-      lon = result[0].lon;
+      lat = searchArray[0].lat;
+      lon = searchArray[0].lon;
       getWeatherData(lat, lon);
       loadLocationData(searchArray);
       searchArray = [];
     } else {
-      console.warn("No relevant results found for:", search);
+      weatherDisplayContainer.classList.add("hidden", "lg:hidden");
+      document.querySelector(".no-result-text").classList.toggle("hidden");
     }
   } catch (error) {
     console.error(error);
@@ -326,6 +334,7 @@ function closeitemsDropdown(e) {
     dropdownMenu.classList.add("-translate-y-2");
     dropdownIcon.classList.remove("rotate-180");
     dropdownMenu.classList.remove("z-10");
+    dropdownMenu.classList.add("-z-1");
   }
 
   //close the day-drop if statement because why not.
@@ -408,7 +417,7 @@ async function reverseGeoCode(lat, lon) {
     console.log(result);
 
     countryStateandDate.innerHTML = `
-    <h2 id="dvCityCountry" class="text-preset4 font-DMSans">${result.address.city == undefined ? result.address.county : result.address.city}, ${result.address.country}</h2>
+    <h2 id="dvCityCountry" class="text-preset4 font-DMSans">${result.address.county || result.address.city || result.address.village} , ${result.address.country}</h2>
     <p id="dvCurrDate" class="text-preset6 font-DMSans">${date}</p>
   `;
   } catch (error) {
@@ -442,9 +451,16 @@ window.addEventListener("load", () => {
   );
 });
 window.addEventListener("click", (e) => {
-  console.log(e);
-  if (e.target.id === "retryButton") {
-    console.log('true');
-    window.location.reload()
+  if (e.target.id.includes("retryButton")) {
+    window.location.reload();
+  } else {
+    return;
   }
+});
+
+// this is for using the enter button to enter the value;
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  getGeoCodeData();
+  searchInput.value = "";
 });

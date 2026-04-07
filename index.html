@@ -136,16 +136,21 @@
     </h1>
 
     <section id="search-menu" class="lg:flex lg:items-center lg:gap-2 lg:w-163.75 lg:h-14 lg:mx-auto">
-      <div class="relative">
-        <div id="search-container" class="flex items-center bg-neutral800 p-4 rounded-xl gap-4">
+      <form class="relative " id="form">
+        <div id="search-container" class="flex items-center bg-neutral800 p-4 rounded-xl gap-4 relative">
           <img src="./assets/images/icon-search.svg" loading="lazy" alt="search-icon" class=" max-h-7">
           <input type="text" id="search-bar" name="search-bar" placeholder="Search for a place..."
             class="text-neutral200 text-preset5 outline-0 font-DMSans w-full h-full lg:w-131.5">
         </div>
-      </div>
+        <div class="hidden search-animation flex gap-2 bg-neutral800 absolute w-full top-15 p-2 rounded-xl">
+          <img src="./assets/images/icon-loading.svg" class="animate-spin" />
+          <p class="text-preset6 text-white">Searching...</p>
+        </div>
+      </form>
       <button id="search-btn"
         class="bg-blue500 w-full my-2 p-3 text-center text-preset5 text-white rounded-xl font-DMSans lg:w-28.5 lg:h-14">Search</button>
     </section>
+    <p class="hidden no-result-text text-preset-4 my-4 text-center text-white">No search result found!</p>
     <section class="weather__grid lg:grid lg:grid-cols-[2fr_1fr] lg:items-start lg:gap-8">
       <section class="">
         <section id="weather__information-display-1"
