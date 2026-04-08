@@ -31,7 +31,7 @@ const loaders = document.querySelectorAll(".loader");
 let searchArray = [];
 let lat, lon;
 let wasOpen = false;
-let cityName, countryName;
+let cityName, countryName, villageName, countyName, countryfullName;
 let dateOptions = {
   year: "numeric",
   month: "short",
@@ -128,11 +128,15 @@ async function getGeoCodeData() {
 // this is for loading the innetHTMl of the location data;
 function loadLocationData(locationData) {
   let location = locationData[0].address;
+  console.log(location);
+  villageName = location.village;
+  countyName = location.county;
+  countryfullName = location.country;
   cityName = location.city;
   countryName = location.country_code.toUpperCase();
 
   countryStateandDate.innerHTML = `
-    <h2 id="dvCityCountry" class="text-preset4 font-DMSans">${cityName}, ${countryName}</h2>
+    <h2 id="dvCityCountry" class="text-preset4 font-DMSans">${cityName || villageName || countyName || countryfullName}, ${countryName}</h2>
     <p id="dvCurrDate" class="text-preset6 font-DMSans">${date}</p>
   `;
 }
@@ -446,6 +450,7 @@ window.addEventListener("load", () => {
     () => {
       lat = 40.7128;
       lon = -74.006;
+      reverseGeoCode(lat, lon);
       getWeatherData(lat, lon);
     },
   );
